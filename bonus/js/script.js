@@ -38,10 +38,8 @@ createApp({
     },
     // bonus 2
     created(){
-        this.automatic = setInterval(() => {
-            this.nextImage()
-        },3000)
-        },
+        this.startAutoplay()
+    },
     methods: {
         previousImage(){
             this.activeImage--;
@@ -59,6 +57,15 @@ createApp({
         // bonus 1
         activate(index){
             this.activeImage = index;
+        },
+        //bonus 3
+        stopAutoplay(){
+            clearInterval(this.automatic)
+        },
+        startAutoplay(){
+            this.automatic = setInterval(() => {
+                this.nextImage()
+            },3000)
         }
     }
 }).mount('#app')
